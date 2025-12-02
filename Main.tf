@@ -7,7 +7,7 @@ terraform {
     }
   }
   cloud {
-    organization = "CloudQuickLabs"
+    organization = "npchitt"
     workspaces {
       name = "AzureLabs"
     }
