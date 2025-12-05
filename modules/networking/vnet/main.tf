@@ -16,7 +16,7 @@ resource "azurerm_public_ip" "public_ipaddress" {
   name                = "public-ip-${count.index}"
   location            = var.location
   resource_group_name = var.resource_group_name
-  allocation_method   = "static"
+  allocation_method   = "Static"
 }
 resource "azurerm_network_interface" "network_interface" {
   count = var.network_interface_count
