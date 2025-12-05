@@ -32,3 +32,29 @@ resource "azurerm_network_interface" "network_interface" {
   }
   
 }
+resource "azrerm_network_security_group" "network_security_group" {
+  name                = "network-security-group"
+  location            = var.location 
+  resource_group_name = var.resource_group_name
+
+  dynamic "security_rule" {
+    for_each = toset(var.network_security_group_rules)
+    content {
+      name                       = "Allow-${security_rule.value.destination_port_range}"
+      priority                   = network_security_group_rules.value.priority      
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = network_security_group_rules.value.destination_port_range
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
+    }
+    
+  }
+}
+resource "azurerm_subnet_network_security_group_association" "subnet_nsg_association" {
+  count = var.vnet_subnet_count
+  subnet_id                 = azurerm_subnet.network_subnet[count.index].id
+  network_security_group_id = azrerm_network_security_group.network_security_group.id  
+}
