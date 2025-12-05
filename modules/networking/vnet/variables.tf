@@ -18,4 +18,12 @@ variable "vnet_subnet_count" {
   type = number
   description = "This defines number of subnets"
 }
+variable "public_ipaddress_count" {
+  type = number
+  description = "This defines number of subnets"
+}
+variable "network_interface_count" {
+  type = number
+  description = "This defines number of subnets"
+}
 

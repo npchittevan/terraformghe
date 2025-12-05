@@ -11,5 +11,7 @@ module "virtual_network" {
   location=var.location
   vnet_name=var.vnet_name
   vnet_address_prefix=var.vnet_address_prefix
+  public_ipaddress_count = var.public_ipaddress_count
+  network_interface_count = var.network_interface_count
   depends_on = [ module.resource-group ]
 }
