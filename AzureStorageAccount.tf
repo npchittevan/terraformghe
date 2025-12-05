@@ -7,8 +7,8 @@ module "resource-group" {
 ##  Demo now
 resource "azurerm_storage_account" "StorageAccountDemo" {
   name                     = "npsatestant000012"
-  resource_group_name      = azurerm_resource_group.demo.name
-  location                 = azurerm_resource_group.demo.location
+  resource_group_name      = module.resource-group.resource_group_name
+  location                 = module.resource-group.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
 
