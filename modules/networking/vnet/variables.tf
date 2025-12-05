@@ -18,3 +18,4 @@ variable "vnet_subnet_count" {
   type = number
   description = "This defines number of subnets"
 }
+
