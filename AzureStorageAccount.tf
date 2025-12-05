@@ -1,8 +1,9 @@
-resource "azurerm_resource_group" "demo" {
-  name     = "example-resources"
-  location = "West Europe"
-}
 
+module "resource-group" {
+  source = "./modules/general/resourcegroup"  
+  resource_group_name = var.resource_group_name
+  location            = var
+}
 ##  Demo now
 resource "azurerm_storage_account" "StorageAccountDemo" {
   name                     = "npsatestant000012"
