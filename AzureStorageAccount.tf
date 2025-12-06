@@ -11,5 +11,16 @@ module "virtual_network" {
   location=var.location
   vnet_name=var.vnet_name
   vnet_address_prefix=var.vnet_address_prefix
+  public_ipaddress_count = var.public_ipaddress_count
+  network_interface_count = var.network_interface_count
+  network_security_group_rules = var.network_security_group_rules
   depends_on = [ module.resource-group ]
+}
+module "machines" {
+  source = "./modules/compute/virtualMachines"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  virtual_machine_count = var.virtual_machine_count
+  virtual_network_interface_ids = module.virtual_network.virtual_network_interface_ids
+  depends_on = [ module.virtual_network ]
 }

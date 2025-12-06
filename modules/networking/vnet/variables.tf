@@ -18,4 +18,26 @@ variable "vnet_subnet_count" {
   type = number
   description = "This defines number of subnets"
 }
-
+variable "public_ipaddress_count" {
+  type = number
+  description = "This defines number of subnets"
+}
+variable "network_interface_count" {
+  type = number
+  description = "This defines number of subnets"
+}
+variable "network_security_group_rules" {
+  type = list(object({
+    #name                       = string
+    priority                   = number
+    #direction                  = string
+    #access                     = string
+    #protocol                   = string
+    #source_port_range          = string
+    destination_port_range     = string
+    #source_address_prefix      = string
+    #destination_address_prefix = string
+  }))
+  description = "List of network security group rules"
+  
+}
