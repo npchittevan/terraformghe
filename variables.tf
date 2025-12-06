@@ -45,7 +45,3 @@ variable "virtual_machine_count" {
   type        = number
   description = "Number of virtual machines to create"  
 }
-variable "virtual_network_interface_ids" {
-    type=list(string)
-    description = "This will hold the virtual network interfaces ids"
-}
