@@ -1,4 +1,4 @@
-resource "azurerm_public" "load_balancer_ip" {
+resource "azurerm_public_ip" "load_balancer_ip" {
   name                = "lb-public-ip"
   location            = var.location
   resource_group_name = var.resource_group_name
