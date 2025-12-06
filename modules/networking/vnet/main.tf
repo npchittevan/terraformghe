@@ -56,5 +56,5 @@ resource "azurerm_network_security_group" "network_security_group" {
 resource "azurerm_subnet_network_security_group_association" "subnet_nsg_association" {
   count = var.vnet_subnet_count
   subnet_id                 = azurerm_subnet.network_subnet[count.index].id
-  network_security_group_id = azrerm_network_security_group.network_security_group.id  
+  network_security_group_id = azurerm_network_security_group.network_security_group.id  
 }
