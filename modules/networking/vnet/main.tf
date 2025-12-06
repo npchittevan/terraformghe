@@ -41,12 +41,12 @@ resource "azurerm_network_security_group" "network_security_group" {
     for_each = toset(var.network_security_group_rules)
     content {
       name                       = "Allow-${security_rule.value.destination_port_range}"
-      priority                   = network_security_group_rules.value.priority      
+      priority                   = security_rule.value.priority
       direction                  = "Inbound"
       access                     = "Allow"
       protocol                   = "Tcp"
       source_port_range          = "*"
-      destination_port_range     = network_security_group_rules.value.destination_port_range
+      destination_port_range     = security_rule.value.destination_port_range
       source_address_prefix      = "*"
       destination_address_prefix = "*"
     }
