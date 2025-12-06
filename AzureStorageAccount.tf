@@ -24,3 +24,14 @@ module "machines" {
   virtual_network_interface_ids = module.virtual_network.virtual_network_interface_ids
   depends_on = [ module.virtual_network ]
 }
+
+module "load-balancer" {
+    source = "./modules/networking/loadbalancer"
+    resource_group_name = var.resource_group_name
+    location = var.location
+    virtual_machine_count = var.virtual_machine_count
+    number_of_machines = var.virtual_machine_count
+    virtual_network_id = module.virtual_network.virtual_network_id
+    network_interface_private_ip_address = module.virtual_network.network_interface_private_ip_address
+    depends_on = [ module.machines ]
+}
