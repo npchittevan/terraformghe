@@ -13,7 +13,8 @@ resource "azurerm_lb" "appbalancer" {
   sku_tier = "Regional"
   frontend_ip_configuration {
     name                 = "frontend-ip"
-    public_ip_address_id = azurerm_public.load_balancer_ip.id
+    public_ip_address_id = azurerm_public_ip.load_balancer_ip.id
+
   }
 }
 resource "azurerm_lb_backend_address_pool" "virtual_machine_pool" {
